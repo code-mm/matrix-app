@@ -41,12 +41,21 @@ dependencies {
     // matrix sdk
     implementation 'com.github.matrix-org:matrix-android-sdk:v0.9.35'
 
-    implementation 'org.ms:androidx-sdk-module-supper:latest'
-
     implementation 'com.google.android.material:material:1.2.0-alpha06'
+
+    implementation 'org.ms:androidx-sdk-module-supper:latest'
+    implementation "org.ms:androidx-sdk-view-natigation:latest"
+
+
 }
 
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
+    testCompileOnly 'org.projectlombok:lombok:1.18.12'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
+}
 
 dependencies {
     def room_version = "2.2.3"

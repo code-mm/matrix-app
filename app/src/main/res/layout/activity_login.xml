@@ -59,6 +59,7 @@
                     android:id="@+id/editTextUsername"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:text="maohuawei1"
                     android:background="@null"
                     android:hint="用户名" />
 
@@ -105,6 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null"
+                    android:text="maohuawei1"
                     android:hint="密码"
                     android:inputType="textPassword" />
 

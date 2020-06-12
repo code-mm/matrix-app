@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+
+    android:padding="3dp">
+
+
+    <ImageView
+        android:id="@+id/imageViewRoomAvatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
+        android:padding="3dp"
+        android:src="@drawable/image_group"></ImageView>
+
+    <TextView
+        android:id="@+id/textViewRoomName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/imageViewRoomAvatar"
+        android:padding="3dp"
+        android:text="房间"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

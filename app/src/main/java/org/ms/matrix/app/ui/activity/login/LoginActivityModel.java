@@ -1,13 +1,14 @@
 package org.ms.matrix.app.ui.activity.login;
 
+import android.os.SystemClock;
 import android.util.Log;
 
 import org.matrix.androidsdk.core.callback.ApiCallback;
 import org.matrix.androidsdk.core.model.MatrixError;
 import org.matrix.androidsdk.rest.model.login.Credentials;
 import org.ms.matrix.app.MatrixClient;
-import org.ms.matrix.app.db.User;
-import org.ms.matrix.app.db.UserDbInjection;
+import org.ms.matrix.app.db.user.User;
+import org.ms.matrix.app.db.MatrixDbInjection;
 import org.ms.module.base.module.BaseModel;
 import org.ms.module.supper.client.Modules;
 
@@ -27,7 +28,7 @@ public class LoginActivityModel extends BaseModel<LoginActivityPresenter> implem
         Modules.getUtilsModule().getThreadPoolUtils().runSubThread(new Runnable() {
             @Override
             public void run() {
-                User user = UserDbInjection.providerUserDataSource().queryLatestUser();
+                User user = MatrixDbInjection.providerUserDataSource().queryLatestUser();
                 queryLatestUserCallBack(user);
             }
         });
@@ -85,15 +86,15 @@ public class LoginActivityModel extends BaseModel<LoginActivityPresenter> implem
                     @Override
                     public void run() {
 
-                        User user = new User();
-                        user._access_token = accessToken;
-                        user._device_id = deviceId;
-                        user._home_server = homeServer;
-                        user._password = password;
-                        user._username = username;
-                        user._timestamp = System.currentTimeMillis();
+                        User user = User.builder()._access_token(accessToken)
+                                ._user_id(userId)
+                                ._username(username)
+                                ._password(password)
+                                ._timestamp(SystemClock.currentThreadTimeMillis())
+                                ._device_id(deviceId)
+                                .build();
 
-                        UserDbInjection.providerUserDataSource().insert(user);
+                        MatrixDbInjection.providerUserDataSource().insert(user);
 
                     }
                 });

@@ -17,7 +17,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import org.ms.matrix.app.R;
-import org.ms.matrix.app.db.User;
+import org.ms.matrix.app.db.user.User;
 import org.ms.matrix.app.ui.activity.main.MainActivity;
 import org.ms.module.base.view.BaseAppCompatActivity;
 import org.ms.module.base.view.StatusBarUtil;
@@ -136,8 +136,8 @@ public class LoginActivity extends BaseAppCompatActivity<LoginActivityPresenter>
 
 
                 if (user != null) {
-                    editTextUsername.setText(user._username);
-                    editTextPassword.setText(user._password);
+                    editTextUsername.setText(user.get_username());
+                    editTextPassword.setText(user.get_password());
 
                     login(editTextUsername.getText().toString().trim(), editTextPassword.getText().toString().trim());
                 }
